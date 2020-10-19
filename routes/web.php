@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('home', ['first_name'=>'Dimitri', 'last_name'=>'McDaniel']);
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/admin', function () {
-  return view('admin.user', ['user'=>'Dimitri']);
-});
+ // route<module 'P'> , get <method P(A)>, arr[X::class, method <x(a)>]
+Route::get('/contact', [ HomeController::class,'contact_page' ]);
+
+// post method
+Route::post('/contact', [HomeController::class, 'contact_post']);
